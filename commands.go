@@ -4,8 +4,7 @@ import (
 	"log"
 	"os"
 	"fmt"
-	"time"
-
+	"github.com/timakin/ts/loader"
 	"github.com/codegangsta/cli"
 )
 
@@ -45,16 +44,6 @@ func debug(v ...interface{}) {
 	}
 }
 
-func goRouTest(test chan int) {
-	test <- 10
-}
-
-func goRouTestTwo(test2 chan int) {
-	time.Sleep(time.Second * 3)
-	test2 <- 20
-}
-
-
 func assert(err error) {
 	if err != nil {
 		log.Fatal(err)
@@ -64,8 +53,8 @@ func assert(err error) {
 func doAll(c *cli.Context) {
 	test := make(chan int)
 	test2 := make(chan int)
-	go goRouTest(test)
-	go goRouTestTwo(test2)
+	go loader.GoRouTest(test)
+	go loader.GoRouTestTwo(test2)
 	fmt.Printf("print all\n")
 	result := <- test
 	resTwo := <- test2
