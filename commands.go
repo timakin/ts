@@ -53,12 +53,16 @@ func assert(err error) {
 func doAll(c *cli.Context) {
 	test := make(chan int)
 	test2 := make(chan int)
+	hn := make(chan string)
 	go loader.GoRouTest(test)
 	go loader.GoRouTestTwo(test2)
+	go loader.GetPHFeed(hn)
 	fmt.Printf("print all\n")
 	result := <- test
 	resTwo := <- test2
+	phres := <- hn
 	fmt.Printf("%d%d\n", result, resTwo)
+	fmt.Printf(phres)
 }
 
 func doBiz(c *cli.Context) {
