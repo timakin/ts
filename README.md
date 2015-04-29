@@ -9,7 +9,7 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 To install, use `go get`:
 
 ```bash
-$ go get -d github.com/timakin/techstack
+$ go get github.com/timakin/ts
 ```
 
 ## Example
