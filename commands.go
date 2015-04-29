@@ -56,7 +56,7 @@ func doAll(c *cli.Context) {
 	hn := make(chan string)
 	go loader.GoRouTest(test)
 	go loader.GoRouTestTwo(test2)
-	go loader.GetPHFeed(hn)
+	go loader.GetHNFeed(hn)
 	fmt.Printf("print all\n")
 	result := <- test
 	resTwo := <- test2
