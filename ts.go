@@ -8,7 +8,7 @@ import (
 
 func main() {
 	app := cli.NewApp()
-	app.Name = "techstack"
+	app.Name = "ts"
 	app.Version = Version
 	app.Usage = ""
 	app.Author = "timakin"
