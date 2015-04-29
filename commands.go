@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"fmt"
 
 	"github.com/codegangsta/cli"
 )
@@ -50,6 +51,7 @@ func assert(err error) {
 }
 
 func doAll(c *cli.Context) {
+	fmt.Printf("print all")
 }
 
 func doBiz(c *cli.Context) {
