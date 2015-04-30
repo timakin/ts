@@ -51,17 +51,9 @@ func assert(err error) {
 }
 
 func doAll(c *cli.Context) {
-	test := make(chan int)
-	test2 := make(chan int)
 	hn := make(chan []int)
-	go loader.GoRouTest(test)
-	go loader.GoRouTestTwo(test2)
 	go loader.GetHNFeed(hn)
-	fmt.Printf("print all\n")
-	result := <- test
-	resTwo := <- test2
 	phres := <- hn
-	fmt.Printf("%d%d\n", result, resTwo)
 	fmt.Printf("%d",phres[0:10])
 }
 
