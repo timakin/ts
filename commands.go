@@ -54,7 +54,7 @@ func doAll(c *cli.Context) {
 	hn := make(chan []int)
 	go loader.GetHNFeed(hn)
 	phres := <- hn
-	fmt.Printf("%d",phres[0:10])
+	fmt.Printf("%d",phres)
 }
 
 func doBiz(c *cli.Context) {
