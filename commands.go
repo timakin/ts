@@ -54,7 +54,7 @@ func doAll(c *cli.Context) {
 	go loader.GetHNFeed(hn)
 	phres := <- hn
 	var HNData loader.Feed = &phres
-	HNData.Display("Hacker News")
+	HNData.Display()
 }
 
 func doBiz(c *cli.Context) {
