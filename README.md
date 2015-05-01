@@ -1,7 +1,7 @@
 TechStack
 ============
 
-## What is this for?
+## For what?
 Fat RSS reader disturbs your effective information gathering.</br>Subscribe popular resources simply with CLI.
 
 ## Installation
