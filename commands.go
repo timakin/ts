@@ -51,7 +51,7 @@ func assert(err error) {
 }
 
 func doAll(c *cli.Context) {
-	hn := make(chan []string)
+	hn := make(chan loader.ResultData)
 	go loader.GetHNFeed(hn)
 	phres := <- hn
 	fmt.Printf("%s",phres)
