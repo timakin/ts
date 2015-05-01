@@ -55,6 +55,7 @@ func doAll(c *cli.Context) {
 	phres := <- hn
 	var HNData loader.Feed = &phres
 	HNData.Display()
+	loader.GetPHFeed()
 }
 
 func doBiz(c *cli.Context) {
