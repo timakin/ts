@@ -51,11 +51,15 @@ func assert(err error) {
 
 func doAll(c *cli.Context) {
 	hn := make(chan loader.ResultData)
+	ph := make(chan loader.ResultData)
 	go loader.GetHNFeed(hn)
-	phres := <- hn
-	var HNData loader.Feed = &phres
+	go loader.GetPHFeed(ph)
+	hnres := <- hn
+	phres := <- ph
+	var HNData loader.Feed = &hnres
+	var PHData loader.Feed = &phres
 	HNData.Display()
-	loader.GetPHFeed()
+	PHData.Display()
 }
 
 func doBiz(c *cli.Context) {
