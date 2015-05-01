@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"os"
-	"fmt"
 	"github.com/timakin/ts/loader"
 	"github.com/codegangsta/cli"
 )
@@ -54,7 +53,8 @@ func doAll(c *cli.Context) {
 	hn := make(chan loader.ResultData)
 	go loader.GetHNFeed(hn)
 	phres := <- hn
-	fmt.Printf("%s",phres)
+	var HNData loader.Feed = &phres
+	HNData.Display()
 }
 
 func doBiz(c *cli.Context) {
