@@ -51,10 +51,10 @@ func assert(err error) {
 }
 
 func doAll(c *cli.Context) {
-	hn := make(chan []int)
+	hn := make(chan []string)
 	go loader.GetHNFeed(hn)
 	phres := <- hn
-	fmt.Printf("%d",phres)
+	fmt.Printf("%s",phres)
 }
 
 func doBiz(c *cli.Context) {
