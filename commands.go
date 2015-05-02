@@ -64,7 +64,7 @@ func doAll(c *cli.Context) {
 		displayRSSFeed("[Mashable]", "http://feeds.mashable.com/Mashable")
 		displayRSSFeed("[EchoJS]", "http://www.echojs.com/rss")
 		displayRSSFeed("[RubyDaily]", "http://feeds.rubydaily.org/RubyDaily")
-		displayRSSFeed("[Hatena]", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
+//		displayRSSFeed("[Hatena]", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
 }
 
 //func doBiz(c *cli.Context) {
