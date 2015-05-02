@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/timakin/ts/loader"
 	"github.com/codegangsta/cli"
 )
@@ -35,6 +36,10 @@ var commandHack = cli.Command{
 	Action: doHack,
 }
 
+func pp(str string) {
+  fmt.Printf(str)
+}
+
 func doAll(c *cli.Context) {
 	hn := make(chan loader.ResultData)
 	ph := make(chan loader.ResultData)
@@ -51,11 +56,13 @@ func doAll(c *cli.Context) {
 	HNData.Display()
 	PHData.Display()
 	REData.Display()
+	
+	pp("[Hatena]\n")
+	loader.GetHatenaFeed()
 }
 
 func doBiz(c *cli.Context) {
 }
 
 func doHack(c *cli.Context) {
-	loader.GetHatenaFeed()
 }
