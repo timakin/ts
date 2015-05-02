@@ -9,7 +9,7 @@ import (
 var Commands = []cli.Command{
 	commandAll,
 //	commandBiz,
-//	commandHack,
+	commandHack,
 }
 
 var commandAll = cli.Command{
@@ -26,13 +26,13 @@ var commandAll = cli.Command{
 //`,
 //	Action: doBiz,
 //}
-//var commandHack = cli.Command{
-//	Name:  "test",
-//	Usage: "",
-//	Description: `
-//`,
-//	Action: doHack,
-//}
+var commandHack = cli.Command{
+	Name:  "test",
+	Usage: "",
+	Description: `
+`,
+	Action: doHack,
+}
 
 func pp(str string) {
   fmt.Printf(str)
@@ -55,11 +55,13 @@ func doAll(c *cli.Context) {
 		PHData.Display()
 		REData.Display()
 
+		pp("[Mashable]\n")
+		loader.GetMashFeed()
 		pp("[Hatena]\n")
 		loader.GetHatenaFeed()
 }
 
 //func doBiz(c *cli.Context) {
 //}
-//func doHack(c *cli.Context) {
-//}
+func doHack(c *cli.Context) {
+}

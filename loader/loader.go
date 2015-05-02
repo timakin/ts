@@ -88,6 +88,7 @@ func itemHandler(feed *rss.Feed, ch *rss.Channel, newitems []*rss.Item) {
 		pp(" - " + item.Title + "\n")
     pp("   - " + item.Links[0].Href + "\n")
 	}
+  pp("\n")
 }
 
 func GetHNFeed(hn chan ResultData) {
@@ -143,6 +144,14 @@ func GetRedditFeed(re chan ResultData) {
 func GetHatenaFeed() {
 	timeout := 5
 	uri := "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss"
+	feed := rss.New(timeout, true, nil, itemHandler)
+  err := feed.Fetch(uri, nil)
+  perror(err)
+}
+
+func GetMashFeed() {
+	timeout := 5
+	uri := "http://feeds.mashable.com/Mashable"
 	feed := rss.New(timeout, true, nil, itemHandler)
   err := feed.Fetch(uri, nil)
   perror(err)
