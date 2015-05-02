@@ -7,6 +7,8 @@ import (
   "encoding/json"
   "strconv"
   "time"
+
+  "github.com/kyeah/gohunt/gohunt"
 )
 
 type Feed interface {
@@ -84,4 +86,22 @@ func GetHNFeed(hn chan ResultData) {
   }
   result.Setter("HackerNews", HNTitle, HNUrl)
   hn <- result
+}
+
+func GetPHFeed(ph chan ResultData) {
+  var result ResultData
+  var PHTitle, PHUrl []string
+
+  client := gohunt.NewUserClient("a0ad779df4746d96d4d87a5a589f786277c4c78699445fc70abdc08d4be77b45")
+
+  posts, err := client.GetPosts()
+  perror(err)
+
+  for _, post := range posts[0:5] {
+    PHTitle = append(PHTitle, post.Name)
+    PHUrl = append(PHUrl, post.RedirectUrl)
+  }
+
+  result.Setter("ProductHunt", PHTitle, PHUrl)
+  ph <- result
 }
