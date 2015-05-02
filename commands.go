@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-	"os"
 	"github.com/timakin/ts/loader"
 	"github.com/codegangsta/cli"
 )
@@ -35,18 +33,6 @@ var commandHack = cli.Command{
 	Description: `
 `,
 	Action: doHack,
-}
-
-func debug(v ...interface{}) {
-	if os.Getenv("DEBUG") != "" {
-		log.Println(v...)
-	}
-}
-
-func assert(err error) {
-	if err != nil {
-		log.Fatal(err)
-	}
 }
 
 func doAll(c *cli.Context) {
