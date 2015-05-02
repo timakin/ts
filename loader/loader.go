@@ -5,9 +5,6 @@ import (
   "io/ioutil"
   "net/http"
   "encoding/json"
-  "strconv"
-  "time"
-
   rss "github.com/jteeuwen/go-pkg-rss"
   "github.com/kyeah/gohunt/gohunt"
   "github.com/jzelinskie/geddit"
@@ -89,22 +86,6 @@ func itemHandler(feed *rss.Feed, ch *rss.Channel, newitems []*rss.Item) {
     pp("   - " + item.Links[0].Href + "\n")
 	}
   pp("\n")
-}
-
-func GetHNFeed(hn chan ResultData) {
-  var result ResultData
-  var HNTitle, HNUrl []string
-  topStoriesUrl := "https://hacker-news.firebaseio.com/v0/topstories.json"
-  jsonRes := getIdsFromUrl(topStoriesUrl)
-  for _, value := range jsonRes[0:5] {
-    url := "https://hacker-news.firebaseio.com/v0/item/" + strconv.Itoa(value) + ".json"
-    HNRes := getJsonDataFromUrl(url)
-    HNTitle = append(HNTitle, HNRes.Title)
-    HNUrl = append(HNUrl, HNRes.Url)
-    time.NewTimer(time.Second * 2)
-  }
-  result.Setter("HackerNews", HNTitle, HNUrl)
-  hn <- result
 }
 
 func GetPHFeed(ph chan ResultData) {
