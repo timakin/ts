@@ -13,6 +13,8 @@ $ go get github.com/timakin/ts
 ```
 
 ## Example
+*If you use iTerm2, you can click the links with cmd + click and directly access to the resources :)
+
 ```
 $ ts pop
 ▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁
