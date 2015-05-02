@@ -55,10 +55,16 @@ func doAll(c *cli.Context) {
 		PHData.Display()
 		REData.Display()
 
+		var uri string
+		pp("[TechCrunch]\n")
+		uri = "http://feeds.feedburner.com/TechCrunch/"
+		loader.GetRSSFeed(uri)
 		pp("[Mashable]\n")
-		loader.GetMashFeed()
+		uri = "http://feeds.mashable.com/Mashable"
+		loader.GetRSSFeed(uri)
 		pp("[Hatena]\n")
-		loader.GetHatenaFeed()
+		uri = "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss"
+		loader.GetRSSFeed(uri)
 }
 
 //func doBiz(c *cli.Context) {
