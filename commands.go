@@ -39,24 +39,24 @@ func pp(str string) {
 }
 
 func doAll(c *cli.Context) {
-	hn := make(chan loader.ResultData)
-	ph := make(chan loader.ResultData)
-	re := make(chan loader.ResultData)
-	go loader.GetHNFeed(hn)
-	go loader.GetPHFeed(ph)
-	go loader.GetRedditFeed(re)
-	hnres := <- hn
-	phres := <- ph
-	reres := <- re
-	var HNData loader.Feed = &hnres
-	var PHData loader.Feed = &phres
-	var REData loader.Feed = &reres
-	HNData.Display()
-	PHData.Display()
-	REData.Display()
+		hn := make(chan loader.ResultData)
+//	ph := make(chan loader.ResultData)
+//	re := make(chan loader.ResultData)
+		go loader.GetHNFeed(hn)
+//	go loader.GetPHFeed(ph)
+//	go loader.GetRedditFeed(re)
+		hnres := <- hn
+//	phres := <- ph
+//	reres := <- re
+		var HNData loader.Feed = &hnres
+//	var PHData loader.Feed = &phres
+//	var REData loader.Feed = &reres
+		HNData.Display()
+//	PHData.Display()
+//	REData.Display()
 
-	pp("[Hatena]\n")
-	loader.GetHatenaFeed()
+//	pp("[Hatena]\n")
+//	loader.GetHatenaFeed()
 }
 
 //func doBiz(c *cli.Context) {
