@@ -15,6 +15,9 @@ $ go get github.com/timakin/ts
 ## Example
 ```
 $ ts pop
+▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁
+
+
 [HackerNews]
  - Evaluation of C, Go, and Rust in the HPC environment [pdf]
    - http://octarineparrot.com/assets/mrfloya-thesis-ba.pdf
