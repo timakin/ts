@@ -38,6 +38,11 @@ func pp(str string) {
   fmt.Printf(str)
 }
 
+func displayRSSFeed(name string, uri string) {
+	pp(name + "\n")
+	loader.GetRSSFeed(uri)
+}
+
 func doAll(c *cli.Context) {
 		pp("▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁\n")
 		hn := make(chan loader.ResultData)
@@ -55,33 +60,17 @@ func doAll(c *cli.Context) {
 		HNData.Display()
 		PHData.Display()
 		REData.Display()
-
-		var uri string
-		pp("[TechCrunch]\n")
-		uri = "http://feeds.feedburner.com/TechCrunch/"
-		loader.GetRSSFeed(uri)
-		pp("[Mashable]\n")
-		uri = "http://feeds.mashable.com/Mashable"
-		loader.GetRSSFeed(uri)
-		pp("[EchoJS]\n")
-		uri = "http://www.echojs.com/rss"
-		loader.GetRSSFeed(uri)
-		pp("[RubyDaily]\n")
-		uri = "http://feeds.rubydaily.org/RubyDaily"
-		loader.GetRSSFeed(uri)
-		pp("[Hatena]\n")
-		uri = "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss"
-		loader.GetRSSFeed(uri)
+		displayRSSFeed("[TechCrunch]", "http://feeds.feedburner.com/TechCrunch/")
+		displayRSSFeed("[Mashable]", "http://feeds.mashable.com/Mashable")
+		displayRSSFeed("[EchoJS]", "http://www.echojs.com/rss")
+		displayRSSFeed("[RubyDaily]", "http://feeds.rubydaily.org/RubyDaily")
+		displayRSSFeed("[Hatena]", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
 }
 
 //func doBiz(c *cli.Context) {
 //}
 func doHack(c *cli.Context) {
-	var uri string
-	pp("[EchoJS]\n")
-	uri = "http://www.echojs.com/rss"
-	loader.GetRSSFeed(uri)
-	pp("[RubyDaily]\n")
-	uri = "http://feeds.rubydaily.org/RubyDaily"
-	loader.GetRSSFeed(uri)
+	displayRSSFeed("[EchoJS]", "http://www.echojs.com/rss")
+	displayRSSFeed("[RubyDaily]", "http://feeds.rubydaily.org/RubyDaily")
+	displayRSSFeed("[Hatena]", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
 }
