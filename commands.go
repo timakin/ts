@@ -27,7 +27,7 @@ var commandAll = cli.Command{
 //	Action: doBiz,
 //}
 //var commandHack = cli.Command{
-//	Name:  "hack",
+//	Name:  "test",
 //	Usage: "",
 //	Description: `
 //`,
@@ -55,8 +55,8 @@ func doAll(c *cli.Context) {
 		PHData.Display()
 		REData.Display()
 
-//	pp("[Hatena]\n")
-//	loader.GetHatenaFeed()
+		pp("[Hatena]\n")
+		loader.GetHatenaFeed()
 }
 
 //func doBiz(c *cli.Context) {

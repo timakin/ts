@@ -8,6 +8,7 @@ import (
   "strconv"
   "time"
 
+  rss "github.com/jteeuwen/go-pkg-rss"
   "github.com/kyeah/gohunt/gohunt"
   "github.com/jzelinskie/geddit"
 )
@@ -82,6 +83,13 @@ func getRedditSession() (session *geddit.LoginSession) {
   return session
 }
 
+func itemHandler(feed *rss.Feed, ch *rss.Channel, newitems []*rss.Item) {
+	for _, item := range newitems[0:5] {
+		pp(" - " + item.Title + "\n")
+    pp("   - " + item.Links[0].Href + "\n")
+	}
+}
+
 func GetHNFeed(hn chan ResultData) {
   var result ResultData
   var HNTitle, HNUrl []string
@@ -92,7 +100,7 @@ func GetHNFeed(hn chan ResultData) {
     HNRes := getJsonDataFromUrl(url)
     HNTitle = append(HNTitle, HNRes.Title)
     HNUrl = append(HNUrl, HNRes.Url)
-    time.NewTimer(time.Second * 1)
+    time.NewTimer(time.Second * 2)
   }
   result.Setter("HackerNews", HNTitle, HNUrl)
   hn <- result
@@ -108,7 +116,7 @@ func GetPHFeed(ph chan ResultData) {
   perror(err)
 
   for _, post := range posts[0:5] {
-    PHTitle = append(PHTitle, post.Name)
+    PHTitle = append(PHTitle, post.Name + " : " + post.Tagline)
     PHUrl = append(PHUrl, post.RedirectUrl)
   }
 
@@ -130,4 +138,12 @@ func GetRedditFeed(re chan ResultData) {
 
   result.Setter("Reddit", RETitle, REUrl)
   re <- result
+}
+
+func GetHatenaFeed() {
+	timeout := 5
+	uri := "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss"
+	feed := rss.New(timeout, true, nil, itemHandler)
+  err := feed.Fetch(uri, nil)
+  perror(err)
 }
