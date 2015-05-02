@@ -36,6 +36,7 @@ var commandHack = cli.Command{
 }
 
 func doAll(c *cli.Context) {
+	loader.GetRedditFeed()
 	hn := make(chan loader.ResultData)
 	ph := make(chan loader.ResultData)
 	go loader.GetHNFeed(hn)
