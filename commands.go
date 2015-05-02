@@ -57,4 +57,5 @@ func doBiz(c *cli.Context) {
 }
 
 func doHack(c *cli.Context) {
+	loader.GetHatenaFeed()
 }
