@@ -8,33 +8,31 @@ import (
 
 var Commands = []cli.Command{
 	commandAll,
-	commandBiz,
-	commandHack,
+//	commandBiz,
+//	commandHack,
 }
 
 var commandAll = cli.Command{
 	Name:  "pop",
 	Usage: "",
-	Description: `
-`,
+	Description: "Show today's news from major tech news sites, HN, PH, and subreddit of /programming.",
 	Action: doAll,
 }
 
-var commandBiz = cli.Command{
-	Name:  "biz",
-	Usage: "",
-	Description: `
-`,
-	Action: doBiz,
-}
-
-var commandHack = cli.Command{
-	Name:  "hack",
-	Usage: "",
-	Description: `
-`,
-	Action: doHack,
-}
+//var commandBiz = cli.Command{
+//	Name:  "biz",
+//	Usage: "",
+//	Description: `
+//`,
+//	Action: doBiz,
+//}
+//var commandHack = cli.Command{
+//	Name:  "hack",
+//	Usage: "",
+//	Description: `
+//`,
+//	Action: doHack,
+//}
 
 func pp(str string) {
   fmt.Printf(str)
@@ -56,13 +54,12 @@ func doAll(c *cli.Context) {
 	HNData.Display()
 	PHData.Display()
 	REData.Display()
-	
+
 	pp("[Hatena]\n")
 	loader.GetHatenaFeed()
 }
 
-func doBiz(c *cli.Context) {
-}
-
-func doHack(c *cli.Context) {
-}
+//func doBiz(c *cli.Context) {
+//}
+//func doHack(c *cli.Context) {
+//}
