@@ -39,6 +39,7 @@ func pp(str string) {
 }
 
 func doAll(c *cli.Context) {
+		pp("▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁\n")
 		hn := make(chan loader.ResultData)
 		ph := make(chan loader.ResultData)
 		re := make(chan loader.ResultData)
