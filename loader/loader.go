@@ -9,6 +9,7 @@ import (
   "time"
 
   "github.com/kyeah/gohunt/gohunt"
+  "github.com/jzelinskie/geddit"
 )
 
 type Feed interface {
@@ -72,6 +73,15 @@ func getJsonDataFromUrl(url string) (jsonRes JsonData) {
   return jsonRes
 }
 
+func getRedditSession() (session *geddit.LoginSession) {
+  session, _ = geddit.NewLoginSession(
+    "techstk",
+    "techstack",
+    "gedditAgent v1",
+  )
+  return session
+}
+
 func GetHNFeed(hn chan ResultData) {
   var result ResultData
   var HNTitle, HNUrl []string
@@ -104,4 +114,20 @@ func GetPHFeed(ph chan ResultData) {
 
   result.Setter("ProductHunt", PHTitle, PHUrl)
   ph <- result
+}
+
+func GetRedditFeed(re chan ResultData) {
+  var result ResultData
+  var RETitle, REUrl []string
+
+  session := getRedditSession()
+  subOpts := geddit.ListingOptions{Limit: 5}
+  submissions, _ := session.SubredditSubmissions("programming", geddit.TopSubmissions, subOpts)
+  for _, s := range submissions {
+    RETitle = append(RETitle, s.Title)
+    REUrl = append(REUrl, s.URL)
+  }
+
+  result.Setter("Reddit", RETitle, REUrl)
+  re <- result
 }
