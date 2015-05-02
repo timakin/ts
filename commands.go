@@ -63,6 +63,12 @@ func doAll(c *cli.Context) {
 		pp("[Mashable]\n")
 		uri = "http://feeds.mashable.com/Mashable"
 		loader.GetRSSFeed(uri)
+		pp("[EchoJS]\n")
+		uri = "http://www.echojs.com/rss"
+		loader.GetRSSFeed(uri)
+		pp("[RubyDaily]\n")
+		uri = "http://feeds.rubydaily.org/RubyDaily"
+		loader.GetRSSFeed(uri)
 		pp("[Hatena]\n")
 		uri = "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss"
 		loader.GetRSSFeed(uri)
@@ -71,4 +77,11 @@ func doAll(c *cli.Context) {
 //func doBiz(c *cli.Context) {
 //}
 func doHack(c *cli.Context) {
+	var uri string
+	pp("[EchoJS]\n")
+	uri = "http://www.echojs.com/rss"
+	loader.GetRSSFeed(uri)
+	pp("[RubyDaily]\n")
+	uri = "http://feeds.rubydaily.org/RubyDaily"
+	loader.GetRSSFeed(uri)
 }
