@@ -12,7 +12,7 @@ var Commands = []cli.Command{
 }
 
 var commandAll = cli.Command{
-	Name:  "all",
+	Name:  "pop",
 	Usage: "",
 	Description: `
 `,
