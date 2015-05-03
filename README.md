@@ -12,7 +12,7 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 - TechCrunch
 - Andreessen Horowitz(a16z)
 - Mashable
-- The Next Web
+- The Next Web
 - Designer News
 - Forbes - Tech
 - Echojs
