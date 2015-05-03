@@ -8,7 +8,6 @@ import (
 
 var Commands = []cli.Command{
 	commandAll,
-//	commandBiz,
 	commandHack,
 }
 
@@ -19,13 +18,6 @@ var commandAll = cli.Command{
 	Action: doAll,
 }
 
-//var commandBiz = cli.Command{
-//	Name:  "biz",
-//	Usage: "",
-//	Description: `
-//`,
-//	Action: doBiz,
-//}
 var commandHack = cli.Command{
 	Name:  "hack",
 	Usage: "",
@@ -61,11 +53,8 @@ func doAll(c *cli.Context) {
 		displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
 		displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
 		displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
-//		displayRSSFeed("Hatena", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
 }
 
-//func doBiz(c *cli.Context) {
-//}
 func doHack(c *cli.Context) {
 	re := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
