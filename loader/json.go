@@ -5,7 +5,6 @@ import (
   "io/ioutil"
   "net/http"
   "encoding/json"
-  rss "github.com/jteeuwen/go-pkg-rss"
   "github.com/kyeah/gohunt/gohunt"
   "github.com/jzelinskie/geddit"
 )
@@ -80,14 +79,6 @@ func getRedditSession() (session *geddit.LoginSession) {
   return session
 }
 
-func itemHandler(feed *rss.Feed, ch *rss.Channel, newitems []*rss.Item) {
-	for _, item := range newitems[0:5] {
-		pp(" - " + item.Title + "\n")
-    pp("   - " + item.Links[0].Href + "\n")
-	}
-  pp("\n")
-}
-
 func GetPHFeed(ph chan ResultData) {
   var result ResultData
   var PHTitle, PHUrl []string
@@ -120,11 +111,4 @@ func GetRedditFeed(re chan ResultData) {
 
   result.Setter("Reddit", RETitle, REUrl)
   re <- result
-}
-
-func GetRSSFeed(uri string) {
-	timeout := 5
-	feed := rss.New(timeout, true, nil, itemHandler)
-  err := feed.Fetch(uri, nil)
-  perror(err)
 }
