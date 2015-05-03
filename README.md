@@ -16,6 +16,10 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 - Echojs
 - RubyDaily
 
+## Dependencies
+
+- Golang
+
 ## Installation
 
 To install, use `go get`:
