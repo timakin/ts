@@ -12,7 +12,6 @@ func itemHandler(feed *r.Feed, ch *r.Channel, newitems []*r.Item) {
   pp("\n")
 }
 
-
 func GetRSSFeed(uri string) {
 	timeout := 5
 	feed := r.New(timeout, true, nil, itemHandler)

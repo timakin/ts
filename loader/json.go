@@ -1,7 +1,6 @@
 package loader
 
 import (
-  "fmt"
   "io/ioutil"
   "net/http"
   "encoding/json"
@@ -38,16 +37,6 @@ func (r *ResultData) Setter(name string, title []string, url []string) {
   r.Name = name
   r.Title = title
   r.Url = url
-}
-
-func pp(str string) {
-  fmt.Printf(str)
-}
-
-func perror(err error) {
-  if err != nil {
-    panic(err)
-  }
 }
 
 func getIdsFromUrl(url string) (ids []int) {
