@@ -80,7 +80,7 @@ $ ts pop
 ...etc
 ```
 
-## Other functions
+## Other Options
 
 ```
 $ ts hack // Only programming topics
