@@ -7,6 +7,7 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 ## Supported Services
 
 - HackerNews
+- GithubTrends - All languages#Daily
 - ProductHunt
 - TechCrunch
 - Mashable
@@ -80,6 +81,7 @@ $ ts pop
 ```
 $ ts hack // Only programming topics
 $ ts hn // HackerNews
+$ ts github // GithubTrends
 $ ts tc // TechCrunch
 $ ts ms // Mashable
 $ ts dn // Designer News
