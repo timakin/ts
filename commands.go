@@ -9,8 +9,14 @@ import (
 var Commands = []cli.Command{
 	commandAll,
 	commandHack,
-	commandHN,
 	commandPH,
+	commandRE,
+	commandHN,
+	commandMS,
+	commandFB,
+	commandEJ,
+	commandRD,
+	commandHatena,
 }
 
 var commandAll = cli.Command{
@@ -28,14 +34,6 @@ var commandHack = cli.Command{
 	Action: doHack,
 }
 
-var commandHN = cli.Command{
-	Name:  "hn",
-	Usage: "",
-	Description: `
-`,
-	Action: doHN,
-}
-
 var commandPH = cli.Command{
 	Name:  "ph",
 	Usage: "",
@@ -44,6 +42,69 @@ var commandPH = cli.Command{
 	Action: doPH,
 }
 
+var commandHN = cli.Command{
+	Name:  "hn",
+	Usage: "",
+	Description: `
+`,
+	Action: doHN,
+}
+
+var commandRE = cli.Command{
+	Name:  "reddit",
+	Usage: "",
+	Description: `
+`,
+	Action: doRE,
+}
+
+var commandTC = cli.Command{
+	Name:  "tc",
+	Usage: "",
+	Description: `
+`,
+	Action: doTC,
+}
+
+var commandMS = cli.Command{
+	Name:  "ms",
+	Usage: "",
+	Description: `
+`,
+	Action: doMS,
+}
+
+var commandFB = cli.Command{
+	Name:  "forbes",
+	Usage: "",
+	Description: `
+`,
+	Action: doFB,
+}
+
+var commandEJ = cli.Command{
+	Name:  "echojs",
+	Usage: "",
+	Description: `
+`,
+	Action: doEJ,
+}
+
+var commandRD = cli.Command{
+	Name:  "rdaily",
+	Usage: "",
+	Description: `
+`,
+	Action: doRD,
+}
+
+var commandHatena = cli.Command{
+	Name:  "hatena",
+	Usage: "",
+	Description: `
+`,
+	Action: doHatena,
+}
 
 func pp(str string) {
   fmt.Printf(str)
@@ -83,11 +144,6 @@ func doHack(c *cli.Context) {
 	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
 	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
 	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
-//	displayRSSFeed("Hatena", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
-}
-
-func doHN(c *cli.Context) {
-	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
 }
 
 func doPH(c *cli.Context) {
@@ -96,4 +152,40 @@ func doPH(c *cli.Context) {
 	phres := <- ph
 	var PHData loader.Feed = &phres
 	PHData.Display()
+}
+
+func doRE(c *cli.Context) {
+	re := make(chan loader.ResultData)
+	go loader.GetRedditFeed(re)
+	reres := <- re
+	var REData loader.Feed = &reres
+	REData.Display()
+}
+
+func doHN(c *cli.Context) {
+	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+}
+
+func doTC(c *cli.Context) {
+	displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
+}
+
+func doMS(c *cli.Context) {
+	displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
+}
+
+func doFB(c *cli.Context) {
+	displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
+}
+
+func doEJ(c *cli.Context) {
+	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
+}
+
+func doRD(c *cli.Context) {
+	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
+}
+
+func doHatena(c *cli.Context) {
+	displayRSSFeed("Hatena", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
 }
