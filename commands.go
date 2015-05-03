@@ -12,6 +12,7 @@ var Commands = []cli.Command{
 	commandPH,
 	commandRE,
 	commandHN,
+	commandGH,
 	commandMS,
 	commandDN,
 	commandFB,
@@ -49,6 +50,14 @@ var commandHN = cli.Command{
 	Description: `
 `,
 	Action: doHN,
+}
+
+var commandGH = cli.Command{
+	Name:  "github",
+	Usage: "",
+	Description: `
+`,
+	Action: doGH,
 }
 
 var commandRE = cli.Command{
@@ -124,6 +133,11 @@ func displayRSSFeed(name string, uri string) {
 	loader.GetRSSFeed(uri)
 }
 
+func displayRSSFeedWithDescription(name string, uri string) {
+	pp("[" + name + "]\n")
+	loader.GetRSSFeedWithDescription(uri)
+}
+
 func doAll(c *cli.Context) {
 		pp("▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁\n\n")
 		ph := make(chan loader.ResultData)
@@ -174,6 +188,10 @@ func doRE(c *cli.Context) {
 
 func doHN(c *cli.Context) {
 	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+}
+
+func doGH(c *cli.Context) {
+	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 }
 
 func doTC(c *cli.Context) {
