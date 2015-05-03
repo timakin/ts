@@ -151,6 +151,7 @@ func doAll(c *cli.Context) {
 		PHData.Display()
 		REData.Display()
 		displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+		displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 		displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
 		displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
 		displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
@@ -166,6 +167,7 @@ func doHack(c *cli.Context) {
 	var REData loader.Feed = &reres
 	REData.Display()
 	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
 	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
 }

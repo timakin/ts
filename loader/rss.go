@@ -14,8 +14,7 @@ func itemHandler(feed *r.Feed, ch *r.Channel, newitems []*r.Item) {
 
 func itemHandlerWithDescription(feed *r.Feed, ch *r.Channel, newitems []*r.Item) {
 	for _, item := range newitems[0:5] {
-		pp(" - " + item.Title + "\n")
-    pp("   - " + removeBreak(item.Description) + "\n")
+		pp(" - " + item.Title + ": " + removeBreak(item.Description)  +"\n")
     pp("   - " + item.Links[0].Href + "\n")
 	}
   pp("\n")
