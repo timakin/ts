@@ -83,15 +83,15 @@ $ ts pop
 ## Other Options
 
 ```
-$ ts hack // Only programming topics
-$ ts hn // HackerNews
-$ ts github // GithubTrends
-$ ts tc // TechCrunch
-$ ts ms // Mashable
-$ ts dn // Designer News
-$ ts forbes // Forbes - Tech
-$ ts echojs // Echojs
-$ ts rdaily // RubyDaily
+$ ts hack     // Only programming topics
+$ ts hn       // HackerNews
+$ ts github   // GithubTrends
+$ ts tc       // TechCrunch
+$ ts ms       // Mashable
+$ ts dn       // Designer News
+$ ts forbes   // Forbes - Tech
+$ ts echojs   // Echojs
+$ ts rdaily   // RubyDaily
 ```
 
 ## Contribution
