@@ -4,6 +4,17 @@ TechStack
 ## For what?
 Fat RSS reader disturbs your effective information gathering.</br>Subscribe popular resources simply with CLI.
 
+## Supported Services
+
+- HackerNews
+- ProductHunt
+- TechCrunch
+- Mashable
+- Designer News
+- Forbes - Tech
+- Echojs
+- RubyDaily
+
 ## Installation
 
 To install, use `go get`:
@@ -67,10 +78,11 @@ $ ts pop
 ## Other functions
 
 ```
-$ ts hack
+$ ts hack // Only programming topics
 $ ts hn // HackerNews
 $ ts tc // TechCrunch
 $ ts ms // Mashable
+$ ts dn // Designer News
 $ ts forbes // Forbes - Tech
 $ ts echojs // Echojs
 $ ts rdaily // RubyDaily

@@ -13,6 +13,7 @@ var Commands = []cli.Command{
 	commandRE,
 	commandHN,
 	commandMS,
+	commandDN,
 	commandFB,
 	commandEJ,
 	commandRD,
@@ -74,6 +75,14 @@ var commandMS = cli.Command{
 	Action: doMS,
 }
 
+var commandDN = cli.Command{
+	Name:  "dn",
+	Usage: "",
+	Description: `
+`,
+	Action: doDN,
+}
+
 var commandFB = cli.Command{
 	Name:  "forbes",
 	Usage: "",
@@ -130,6 +139,7 @@ func doAll(c *cli.Context) {
 		displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
 		displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
 		displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
+		displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
 		displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
 		displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
 		displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
@@ -172,6 +182,10 @@ func doTC(c *cli.Context) {
 
 func doMS(c *cli.Context) {
 	displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
+}
+
+func doDN(c *cli.Context) {
+	displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
 }
 
 func doFB(c *cli.Context) {
