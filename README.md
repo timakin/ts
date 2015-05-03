@@ -11,6 +11,11 @@ To install, use `go get`:
 ```bash
 $ go get github.com/timakin/ts
 ```
+## Update
+
+```bash
+$ go get -u github.com/timakin/ts
+```
 
 ## Example
 *If you use iTerm2, you can click the links with cmd + click and directly access to the resources :)
@@ -57,6 +62,18 @@ $ ts pop
    - http://hookrace.net/blog/porting-nes-go-nim/
 
 ...etc
+```
+
+## Other functions
+
+```
+$ ts hack
+$ ts hn // HackerNews
+$ ts tc // TechCrunch
+$ ts ms // Mashable
+$ ts forbes // Forbes - Tech
+$ ts echojs // Echojs
+$ ts rdaily // RubyDaily
 ```
 
 ## Contribution
