@@ -18,6 +18,7 @@ var Commands = []cli.Command{
 	commandFB,
 	commandEJ,
 	commandRD,
+	commandA16Z,
 	commandHatena,
 }
 
@@ -116,6 +117,14 @@ var commandRD = cli.Command{
 	Action: doRD,
 }
 
+var commandA16Z = cli.Command{
+	Name:  "a16z",
+	Usage: "",
+	Description: `
+`,
+	Action: doA16Z,
+}
+
 var commandHatena = cli.Command{
 	Name:  "hatena",
 	Usage: "",
@@ -158,6 +167,7 @@ func doAll(c *cli.Context) {
 		displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
 		displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
 		displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
+		displayRSSFeed("A16Z", "http://a16z.com/feed/")
 }
 
 func doHack(c *cli.Context) {
@@ -218,6 +228,10 @@ func doEJ(c *cli.Context) {
 
 func doRD(c *cli.Context) {
 	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
+}
+
+func doA16Z(c *cli.Context) {
+	displayRSSFeed("A16Z", "http://a16z.com/feed/")
 }
 
 func doHatena(c *cli.Context) {

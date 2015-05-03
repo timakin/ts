@@ -10,6 +10,7 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 - GithubTrends - All languages#Daily
 - ProductHunt
 - TechCrunch
+- Andreessen Horowitz(a16z)
 - Mashable
 - Designer News
 - Forbes - Tech
@@ -87,6 +88,7 @@ $ ts hack     // Only programming topics
 $ ts hn       // HackerNews
 $ ts github   // GithubTrends
 $ ts tc       // TechCrunch
+$ ts a16z     // Andreessen Horowitz
 $ ts ms       // Mashable
 $ ts dn       // Designer News
 $ ts forbes   // Forbes - Tech
