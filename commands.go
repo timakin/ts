@@ -9,6 +9,8 @@ import (
 var Commands = []cli.Command{
 	commandAll,
 	commandHack,
+	commandHN,
+	commandPH,
 }
 
 var commandAll = cli.Command{
@@ -25,6 +27,23 @@ var commandHack = cli.Command{
 `,
 	Action: doHack,
 }
+
+var commandHN = cli.Command{
+	Name:  "hn",
+	Usage: "",
+	Description: `
+`,
+	Action: doHN,
+}
+
+var commandPH = cli.Command{
+	Name:  "ph",
+	Usage: "",
+	Description: `
+`,
+	Action: doPH,
+}
+
 
 func pp(str string) {
   fmt.Printf(str)
@@ -65,4 +84,16 @@ func doHack(c *cli.Context) {
 	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
 	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
 //	displayRSSFeed("Hatena", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
+}
+
+func doHN(c *cli.Context) {
+	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+}
+
+func doPH(c *cli.Context) {
+	ph := make(chan loader.ResultData)
+	go loader.GetPHFeed(ph)
+	phres := <- ph
+	var PHData loader.Feed = &phres
+	PHData.Display()
 }
