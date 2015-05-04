@@ -25,7 +25,7 @@ type ResultData struct {
 }
 
 func (r *ResultData) Display() {
-  pp("[" + r.Name + "]\n")
+  ppred("[" + r.Name + "]\n")
   for key, _ := range r.Title {
     pp(" - " + r.Title[key] + "\n")
     pp("   - " + r.Url[key] + "\n")

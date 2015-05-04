@@ -147,18 +147,22 @@ func pp(str string) {
   fmt.Printf(str)
 }
 
+func ppred(str string) {
+	fmt.Printf("\033[1;31m" + str + "\033[0m")
+}
+
 func displayRSSFeed(name string, uri string) {
-	pp("[" + name + "]\n")
+	ppred("[" + name + "]\n")
 	loader.GetRSSFeed(uri)
 }
 
 func displayRSSFeedWithDescription(name string, uri string) {
-	pp("[" + name + "]\n")
+	ppred("[" + name + "]\n")
 	loader.GetRSSFeedWithDescription(uri)
 }
 
 func doAll(c *cli.Context) {
-		pp("▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁\n\n")
+		ppred("▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁\n\n")
 		ph := make(chan loader.ResultData)
 		re := make(chan loader.ResultData)
 		go loader.GetPHFeed(ph)
