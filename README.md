@@ -29,6 +29,10 @@ brew tap timakin/ts
 brew install ts
 ```
 
+Or install this package with binary files from [here](https://github.com/timakin/ts/releases/tag/v0.1.0).
+
+
+
 ## Installation(Dev)
 
 To install, use `go get`:
