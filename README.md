@@ -22,7 +22,14 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 
 - Golang
 
-## Installation
+## Installation(User)
+
+```bash
+brew tap timakin/ts
+brew install ts
+```
+
+## Installation(Dev)
 
 To install, use `go get`:
 
