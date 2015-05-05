@@ -4,7 +4,7 @@ TechStack
 ## For what?
 Fat RSS reader disturbs your effective information gathering.</br>Subscribe popular resources simply with CLI.
 
-## Supported Services
+## Supported Services(v0.1.0)
 
 - HackerNews
 - GithubTrends - All languages#Daily
