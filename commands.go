@@ -165,14 +165,14 @@ func displayAA() {
 	ppred(renderStr + "\n\n")
 }
 
-func displayRSSFeed(name string, uri string) {
+func displayUnitRssFeed(name string, uri string) {
 	ppred("[" + name + "]\n")
-	loader.GetRSSFeed(uri)
+	loader.GetUnitRssFeed(uri)
 }
 
-func displayRSSFeedWithDescription(name string, uri string) {
+func displayUnitRssFeedWithDesc(name string, uri string) {
 	ppred("[" + name + "]\n")
-	loader.GetRSSFeedWithDescription(uri)
+	loader.GetUnitRssFeedWithDesc(uri)
 }
 
 func doAll(c *cli.Context) {
@@ -233,7 +233,7 @@ func doAll(c *cli.Context) {
 	EJSData.Display()
 	A16ZData.Display()
 
-//	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
+//	displayUnitRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 }
 
 func doHack(c *cli.Context) {
@@ -242,10 +242,10 @@ func doHack(c *cli.Context) {
 	reres := <-re
 	var REData loader.Feed = &reres
 	REData.Display()
-	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
-	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
-	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
-	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
+	displayUnitRssFeed("HackerNews", "https://news.ycombinator.com/rss")
+	displayUnitRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
+	displayUnitRssFeed("EchoJS", "http://www.echojs.com/rss")
+	displayUnitRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
 }
 
 func doPH(c *cli.Context) {
@@ -265,45 +265,45 @@ func doRE(c *cli.Context) {
 }
 
 func doHN(c *cli.Context) {
-	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+	displayUnitRssFeed("HackerNews", "https://news.ycombinator.com/rss")
 }
 
 func doGH(c *cli.Context) {
-	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
+	displayUnitRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 }
 
 func doTC(c *cli.Context) {
-	displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
+	displayUnitRssFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
 }
 
 func doMS(c *cli.Context) {
-	displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
+	displayUnitRssFeed("Mashable", "http://feeds.mashable.com/Mashable")
 }
 
 func doTNW(c *cli.Context) {
-	displayRSSFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb")
+	displayUnitRssFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb")
 }
 
 func doDN(c *cli.Context) {
-	displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
+	displayUnitRssFeed("Designer News", "https://news.layervault.com/?format=rss")
 }
 
 func doFB(c *cli.Context) {
-	displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
+	displayUnitRssFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
 }
 
 func doEJ(c *cli.Context) {
-	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
+	displayUnitRssFeed("EchoJS", "http://www.echojs.com/rss")
 }
 
 func doRD(c *cli.Context) {
-	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
+	displayUnitRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
 }
 
 func doA16Z(c *cli.Context) {
-	displayRSSFeed("A16Z", "http://a16z.com/feed/")
+	displayUnitRssFeed("A16Z", "http://a16z.com/feed/")
 }
 
 func doHatena(c *cli.Context) {
-	displayRSSFeed("Hatena", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
+	displayUnitRssFeed("Hatena", "http://b.hatena.ne.jp/search/tag?q=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0&users=10&mode=rss")
 }
