@@ -1,10 +1,14 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/timakin/ts/loader"
 	"github.com/codegangsta/cli"
+	"github.com/getwe/figlet4go"
 )
+
+var flag_str = flag.String("str", "TechStack", "input string")
 
 var Commands = []cli.Command{
 	commandAll,
@@ -162,7 +166,15 @@ func displayRSSFeedWithDescription(name string, uri string) {
 }
 
 func doAll(c *cli.Context) {
-		ppred("▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁\n\n")
+		flag.Parse()
+		str := *flag_str
+		ascii := figlet4go.NewAsciiRender()
+		options := figlet4go.NewRenderOptions()
+		options.FontName = "larry3d"
+		ascii.LoadFont("/usr/local/Cellar/figlet/2.2.5/share/figlet/fonts/")
+		renderStr, _ := ascii.RenderOpts(str, options)
+		ppred(renderStr + "\n\n")
+
 		ph := make(chan loader.ResultData)
 		re := make(chan loader.ResultData)
 		go loader.GetPHFeed(ph)
