@@ -13,3 +13,5 @@ for ARCHIVE in ./pkg/dist/*; do
         -u ${BINTRAY_USER}:${BINTRAY_API_KEY} \
         "https://api.bintray.com/content/timakin/ts/ts/${VERSION}/${ARCHIVE_NAME}"
 done
+
+rm -rf pkg/
