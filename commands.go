@@ -8,8 +8,6 @@ import (
 	"github.com/getwe/figlet4go"
 )
 
-var flag_str = flag.String("str", "TechStack", "input string")
-
 var Commands = []cli.Command{
 	commandAll,
 	commandHack,
@@ -155,6 +153,18 @@ func ppred(str string) {
 	fmt.Printf("\033[1;31m" + str + "\033[0m")
 }
 
+func displayAA() {
+	flag_str := flag.String("str", "TechStack", "input string")
+	flag.Parse()
+	str := *flag_str
+	ascii := figlet4go.NewAsciiRender()
+	options := figlet4go.NewRenderOptions()
+	options.FontName = "larry3d"
+	ascii.LoadFont("./fonts/")
+	renderStr, _ := ascii.RenderOpts(str, options)
+	ppred(renderStr + "\n\n")
+}
+
 func displayRSSFeed(name string, uri string) {
 	ppred("[" + name + "]\n")
 	loader.GetRSSFeed(uri)
@@ -166,15 +176,7 @@ func displayRSSFeedWithDescription(name string, uri string) {
 }
 
 func doAll(c *cli.Context) {
-		flag.Parse()
-		str := *flag_str
-		ascii := figlet4go.NewAsciiRender()
-		options := figlet4go.NewRenderOptions()
-		options.FontName = "larry3d"
-		ascii.LoadFont("/usr/local/Cellar/figlet/2.2.5/share/figlet/fonts/")
-		renderStr, _ := ascii.RenderOpts(str, options)
-		ppred(renderStr + "\n\n")
-
+		displayAA()
 		ph := make(chan loader.ResultData)
 		re := make(chan loader.ResultData)
 		go loader.GetPHFeed(ph)
