@@ -26,6 +26,15 @@ brew tap timakin/ts
 brew install ts
 ```
 
+## Update(User)
+
+```bash
+brew uninstall ts
+brew untap timakin/ts
+brew tap timakin/ts
+brew install ts
+```
+
 ## Installation(Dev)
 
 To install, use `go get`:
@@ -44,7 +53,12 @@ $ go get -u github.com/timakin/ts
 
 ```
 $ ts pop
-▁ ▂ ▄ ▅ ▆ ▇ █ тecнѕтacĸ █ ▇ ▆ ▅ ▄ ▂ ▁
+.___________. _______   ______  __    __       _______..___________.     ___        ______  __  ___
+|           ||   ____| /      ||  |  |  |     /       ||           |    /   \      /      ||  |/  /
+`---|  |----`|  |__   |  ,----'|  |__|  |    |   (----``---|  |----`   /  ^  \    |  ,----'|  '  /
+    |  |     |   __|  |  |     |   __   |     \   \        |  |       /  /_\  \   |  |     |    <
+    |  |     |  |____ |  `----.|  |  |  | .----)   |       |  |      /  _____  \  |  `----.|  .  \
+    |__|     |_______| \______||__|  |__| |_______/        |__|     /__/     \__\  \______||__|\__\
 
 
 [HackerNews]
