@@ -4,7 +4,7 @@ TechStack
 ## For what?
 Fat RSS reader disturbs your effective information gathering.</br>Subscribe popular resources simply with CLI.
 
-## Supported Services(v0.3.0)
+## Supported Services(v0.3.1)
 
 - ProductHunt
 - Reddit - Programming
@@ -25,10 +25,6 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 brew tap timakin/ts
 brew install ts
 ```
-
-Or install this package with binary files from [here](https://github.com/timakin/ts/releases/tag/v0.1.0).
-
-
 
 ## Installation(Dev)
 
