@@ -13,9 +13,22 @@ type RSS struct {
     Items Items `xml:"channel"`
 }
 
+type RDF struct {
+    XMLName xml.Name `xml:"RDF"`
+    Channel *Channel `xml:"channel"`
+    Item    []*Item  `xml:"item"`
+}
+
 type Items struct {
     XMLName xml.Name `xml:"channel"`
     ItemList []Item `xml:"item"`
+}
+
+type Channel struct {
+    Title       string `xml:"title"`
+    Description string `xml:"description"`
+    Link        string `xml:"link"`
+    Date        string `xml:"date"`
 }
 
 type Item struct {
@@ -34,6 +47,16 @@ func getXMLDataFromUrl(url string) (xmlRes RSS) {
 	return xmlRes
 }
 
+func getRDFDataFromUrl(url string) (rdfRes RDF) {
+	resp, err := http.Get(url)
+	perror(err)
+	rdfDataFromHttp, err := ioutil.ReadAll(resp.Body)
+	perror(err)
+	err = xml.Unmarshal([]byte(rdfDataFromHttp), &rdfRes)
+	perror(err)
+	return rdfRes
+}
+
 func GetRssFeed(name string, url string, rss chan ResultData) {
 	var result ResultData
 	var RSSTitle, RSSUrl []string
@@ -47,6 +70,19 @@ func GetRssFeed(name string, url string, rss chan ResultData) {
 	rss <- result
 }
 
+func GetRdfFeed(name string, url string, rdf chan ResultData) {
+	var result ResultData
+	var RDFTitle, RDFUrl []string
+
+	xml := getRDFDataFromUrl(url)
+	for _, item := range xml.Item[0:5] {
+		RDFTitle = append(RDFTitle, strings.Replace(item.Title,"\n","",-1))
+		RDFUrl = append(RDFUrl, strings.Replace(item.Link,"\n","",-1))
+	}
+	result.Setter(name, RDFTitle, RDFUrl)
+	rdf <- result
+}
+
 func GetRssFeedWithDesc(name string, url string, rss chan ResultData) {
 	var result ResultData
 	var RSSTitle, RSSUrl []string
@@ -58,6 +94,19 @@ func GetRssFeedWithDesc(name string, url string, rss chan ResultData) {
 	}
 	result.Setter(name, RSSTitle, RSSUrl)
 	rss <- result
+}
+
+func GetRdfFeedWithDesc(name string, url string, rdf chan ResultData) {
+	var result ResultData
+	var RDFTitle, RDFUrl []string
+
+	xml := getRDFDataFromUrl(url)
+	for _, item := range xml.Item[0:5] {
+		RDFTitle = append(RDFTitle, strings.Replace(item.Title + ": " + removeBreak(item.Description),"\n","",-1))
+		RDFUrl = append(RDFUrl, strings.Replace(item.Link,"\n","",-1))
+	}
+	result.Setter(name, RDFTitle, RDFUrl)
+	rdf <- result
 }
 
 func itemHandler(feed *r.Feed, ch *r.Channel, newitems []*r.Item) {

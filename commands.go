@@ -180,6 +180,7 @@ func doAll(c *cli.Context) {
 	ph 	   := make(chan loader.ResultData)
 	re 	   := make(chan loader.ResultData)
 	hn 	   := make(chan loader.ResultData)
+	gh     := make(chan loader.ResultData)
 	tc 	   := make(chan loader.ResultData)
 	ms 	   := make(chan loader.ResultData)
 	tnw    := make(chan loader.ResultData)
@@ -191,6 +192,7 @@ func doAll(c *cli.Context) {
 	go loader.GetPHFeed(ph)
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss" ,hn)
+	go loader.GetRdfFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss" ,gh)
 	go loader.GetRssFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/" ,tc)
 	go loader.GetRssFeed("Mashable", "http://feeds.mashable.com/Mashable", ms)
 	go loader.GetRssFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb", tnw)
@@ -202,6 +204,7 @@ func doAll(c *cli.Context) {
 	phres  		:= <-ph
 	reres  		:= <-re
 	hnres  		:= <-hn
+	ghres  		:= <-gh
 	tcres  		:= <-tc
 	msres  		:= <-ms
 	tnwres 		:= <-tnw
@@ -213,6 +216,7 @@ func doAll(c *cli.Context) {
 	var PHData loader.Feed 		 = &phres
 	var REData loader.Feed 		 = &reres
 	var HNData loader.Feed 		 = &hnres
+	var GHData loader.Feed 		 = &ghres
 	var TCData loader.Feed 		 = &tcres
 	var MSData loader.Feed 		 = &msres
 	var TNWData loader.Feed 	 = &tnwres
@@ -225,6 +229,7 @@ func doAll(c *cli.Context) {
 	REData.Display()
 	HNData.Display()
 	TCData.Display()
+	GHData.Display()
 	MSData.Display()
 	TNWData.Display()
 	DNData.Display()
@@ -232,33 +237,34 @@ func doAll(c *cli.Context) {
 	RDailyData.Display()
 	EJSData.Display()
 	A16ZData.Display()
-
-//	displayUnitRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 }
 
 func doHack(c *cli.Context) {
 	re 		 := make(chan loader.ResultData)
 	hn 		 := make(chan loader.ResultData)
+	gh 		 := make(chan loader.ResultData)
 	ejs 	 := make(chan loader.ResultData)
 	rdaily := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss" ,hn)
+	go loader.GetRdfFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss" ,gh)
 	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
 	go loader.GetRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily", rdaily)
 	reres 		:= <-re
 	hnres 		:= <-hn
+	ghres 		:= <-gh
 	ejsres 		:= <-ejs
 	rdailyres := <-rdaily
 	var REData loader.Feed 		 = &reres
 	var HNData loader.Feed 		 = &hnres
+	var GHData loader.Feed 		 = &ghres
 	var EJSData loader.Feed 	 = &ejsres
 	var RDailyData loader.Feed = &rdailyres
 	REData.Display()
 	HNData.Display()
+	GHData.Display()
 	EJSData.Display()
 	RDailyData.Display()
-
-	//displayUnitRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 }
 
 func doPH(c *cli.Context) {
