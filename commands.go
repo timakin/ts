@@ -177,26 +177,63 @@ func displayRSSFeedWithDescription(name string, uri string) {
 
 func doAll(c *cli.Context) {
 	displayAA()
-	ph := make(chan loader.ResultData)
-	re := make(chan loader.ResultData)
+	ph 	   := make(chan loader.ResultData)
+	re 	   := make(chan loader.ResultData)
+	hn 	   := make(chan loader.ResultData)
+	tc 	   := make(chan loader.ResultData)
+	ms 	   := make(chan loader.ResultData)
+	tnw    := make(chan loader.ResultData)
+	dn 	   := make(chan loader.ResultData)
+	fbs    := make(chan loader.ResultData)
+	rdaily := make(chan loader.ResultData)
+	ejs 	 := make(chan loader.ResultData)
+	a16z 	 := make(chan loader.ResultData)
 	go loader.GetPHFeed(ph)
 	go loader.GetRedditFeed(re)
+	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss" ,hn)
+	go loader.GetRssFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/" ,tc)
+	go loader.GetRssFeed("Mashable", "http://feeds.mashable.com/Mashable", ms)
+	go loader.GetRssFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb", tnw)
+	go loader.GetRssFeed("Designer News", "https://news.layervault.com/?format=rss", dn)
+	go loader.GetRssFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/", fbs)
+	go loader.GetRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily", rdaily)
+	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
+	go loader.GetRssFeed("A16Z", "http://a16z.com/feed/", a16z)
 	phres := <-ph
 	reres := <-re
+	hnres := <-hn
+	tcres := <-tc
+	msres := <-ms
+	tnwres := <-tnw
+	dnres := <-dn
+	fbsres := <-fbs
+	rdailyres := <-rdaily
+	ejsres := <-ejs
+	a16zres := <-a16z
 	var PHData loader.Feed = &phres
 	var REData loader.Feed = &reres
+	var HNData loader.Feed = &hnres
+	var TCData loader.Feed = &tcres
+	var MSData loader.Feed = &msres
+	var TNWData loader.Feed = &tnwres
+	var DNData loader.Feed = &dnres
+	var FBSData loader.Feed = &fbsres
+	var RDailyData loader.Feed = &rdailyres
+	var EJSData loader.Feed = &ejsres
+	var A16ZData loader.Feed = &a16zres
 	PHData.Display()
 	REData.Display()
-	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
-	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
-	displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
-	displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
-	displayRSSFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb")
-	displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
-	displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
-	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
-	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
-	displayRSSFeed("A16Z", "http://a16z.com/feed/")
+	HNData.Display()
+	TCData.Display()
+	MSData.Display()
+	TNWData.Display()
+	DNData.Display()
+	FBSData.Display()
+	RDailyData.Display()
+	EJSData.Display()
+	A16ZData.Display()
+
+//	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
 }
 
 func doHack(c *cli.Context) {
