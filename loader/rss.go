@@ -2,39 +2,39 @@ package loader
 
 import (
 	"encoding/xml"
-	"net/http"
-	"io/ioutil"
-	"strings"
 	r "github.com/jteeuwen/go-pkg-rss"
+	"io/ioutil"
+	"net/http"
+	"strings"
 )
 
 type RSS struct {
-    XMLName xml.Name `xml:"rss"`
-    Items Items `xml:"channel"`
+	XMLName xml.Name `xml:"rss"`
+	Items   Items    `xml:"channel"`
 }
 
 type RDF struct {
-    XMLName xml.Name `xml:"RDF"`
-    Channel *Channel `xml:"channel"`
-    Item    []*Item  `xml:"item"`
+	XMLName xml.Name `xml:"RDF"`
+	Channel *Channel `xml:"channel"`
+	Item    []*Item  `xml:"item"`
 }
 
 type Items struct {
-    XMLName xml.Name `xml:"channel"`
-    ItemList []Item `xml:"item"`
+	XMLName  xml.Name `xml:"channel"`
+	ItemList []Item   `xml:"item"`
 }
 
 type Channel struct {
-    Title       string `xml:"title"`
-    Description string `xml:"description"`
-    Link        string `xml:"link"`
-    Date        string `xml:"date"`
+	Title       string `xml:"title"`
+	Description string `xml:"description"`
+	Link        string `xml:"link"`
+	Date        string `xml:"date"`
 }
 
 type Item struct {
-    Title string `xml:"title"`
-    Link string `xml:"link"`
-		Description string `xml:"description"`
+	Title       string `xml:"title"`
+	Link        string `xml:"link"`
+	Description string `xml:"description"`
 }
 
 func getXMLDataFromUrl(url string) (xmlRes RSS) {
@@ -63,8 +63,8 @@ func GetRssFeed(name string, url string, rss chan ResultData) {
 
 	xml := getXMLDataFromUrl(url)
 	for _, item := range xml.Items.ItemList[0:5] {
-		RSSTitle = append(RSSTitle, strings.Replace(item.Title,"\n","",-1))
-		RSSUrl = append(RSSUrl, strings.Replace(item.Link,"\n","",-1))
+		RSSTitle = append(RSSTitle, strings.Replace(item.Title, "\n", "", -1))
+		RSSUrl = append(RSSUrl, strings.Replace(item.Link, "\n", "", -1))
 	}
 	result.Setter(name, RSSTitle, RSSUrl)
 	rss <- result
@@ -76,8 +76,8 @@ func GetRdfFeed(name string, url string, rdf chan ResultData) {
 
 	xml := getRDFDataFromUrl(url)
 	for _, item := range xml.Item[0:5] {
-		RDFTitle = append(RDFTitle, strings.Replace(item.Title,"\n","",-1))
-		RDFUrl = append(RDFUrl, strings.Replace(item.Link,"\n","",-1))
+		RDFTitle = append(RDFTitle, strings.Replace(item.Title, "\n", "", -1))
+		RDFUrl = append(RDFUrl, strings.Replace(item.Link, "\n", "", -1))
 	}
 	result.Setter(name, RDFTitle, RDFUrl)
 	rdf <- result
@@ -89,8 +89,8 @@ func GetRssFeedWithDesc(name string, url string, rss chan ResultData) {
 
 	xml := getXMLDataFromUrl(url)
 	for _, item := range xml.Items.ItemList[0:5] {
-		RSSTitle = append(RSSTitle, strings.Replace(item.Title + ": " + removeBreak(item.Description),"\n","",-1))
-		RSSUrl = append(RSSUrl, strings.Replace(item.Link,"\n","",-1))
+		RSSTitle = append(RSSTitle, strings.Replace(item.Title+": "+removeBreak(item.Description), "\n", "", -1))
+		RSSUrl = append(RSSUrl, strings.Replace(item.Link, "\n", "", -1))
 	}
 	result.Setter(name, RSSTitle, RSSUrl)
 	rss <- result
@@ -102,8 +102,8 @@ func GetRdfFeedWithDesc(name string, url string, rdf chan ResultData) {
 
 	xml := getRDFDataFromUrl(url)
 	for _, item := range xml.Item[0:5] {
-		RDFTitle = append(RDFTitle, strings.Replace(item.Title + ": " + removeBreak(item.Description),"\n","",-1))
-		RDFUrl = append(RDFUrl, strings.Replace(item.Link,"\n","",-1))
+		RDFTitle = append(RDFTitle, strings.Replace(item.Title+": "+removeBreak(item.Description), "\n", "", -1))
+		RDFUrl = append(RDFUrl, strings.Replace(item.Link, "\n", "", -1))
 	}
 	result.Setter(name, RDFTitle, RDFUrl)
 	rdf <- result
