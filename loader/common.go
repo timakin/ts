@@ -1,12 +1,12 @@
 package loader
 
 import (
-  "fmt"
-  "strings"
+	"fmt"
+	"strings"
 )
 
 func pp(str string) {
-  fmt.Printf(str)
+	fmt.Printf(str)
 }
 
 func ppred(str string) {
@@ -14,12 +14,12 @@ func ppred(str string) {
 }
 
 func perror(err error) {
-  if err != nil {
-    panic(err)
-  }
+	if err != nil {
+		panic(err)
+	}
 }
 
 func removeBreak(str string) (result string) {
-  result = strings.Replace(str, "\n", " ", -1)
-  return result
+	result = strings.Replace(str, "\n", " ", -1)
+	return result
 }

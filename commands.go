@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/timakin/ts/loader"
 	"github.com/codegangsta/cli"
 	"github.com/getwe/figlet4go"
+	"github.com/timakin/ts/loader"
 )
 
 var Commands = []cli.Command{
@@ -27,10 +27,10 @@ var Commands = []cli.Command{
 }
 
 var commandAll = cli.Command{
-	Name:  "pop",
-	Usage: "",
+	Name:        "pop",
+	Usage:       "",
 	Description: "Show today's news from major tech news sites, HN, PH, and subreddit of /programming.",
-	Action: doAll,
+	Action:      doAll,
 }
 
 var commandHack = cli.Command{
@@ -146,7 +146,7 @@ var commandHatena = cli.Command{
 }
 
 func pp(str string) {
-  fmt.Printf(str)
+	fmt.Printf(str)
 }
 
 func ppred(str string) {
@@ -176,33 +176,33 @@ func displayRSSFeedWithDescription(name string, uri string) {
 }
 
 func doAll(c *cli.Context) {
-		displayAA()
-		ph := make(chan loader.ResultData)
-		re := make(chan loader.ResultData)
-		go loader.GetPHFeed(ph)
-		go loader.GetRedditFeed(re)
-		phres := <- ph
-		reres := <- re
-		var PHData loader.Feed = &phres
-		var REData loader.Feed = &reres
-		PHData.Display()
-		REData.Display()
-		displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
-		displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
-		displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
-		displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
-		displayRSSFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb")
-		displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
-		displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
-		displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
-		displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
-		displayRSSFeed("A16Z", "http://a16z.com/feed/")
+	displayAA()
+	ph := make(chan loader.ResultData)
+	re := make(chan loader.ResultData)
+	go loader.GetPHFeed(ph)
+	go loader.GetRedditFeed(re)
+	phres := <-ph
+	reres := <-re
+	var PHData loader.Feed = &phres
+	var REData loader.Feed = &reres
+	PHData.Display()
+	REData.Display()
+	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
+	displayRSSFeedWithDescription("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss")
+	displayRSSFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/")
+	displayRSSFeed("Mashable", "http://feeds.mashable.com/Mashable")
+	displayRSSFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb")
+	displayRSSFeed("Designer News", "https://news.layervault.com/?format=rss")
+	displayRSSFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/")
+	displayRSSFeed("EchoJS", "http://www.echojs.com/rss")
+	displayRSSFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
+	displayRSSFeed("A16Z", "http://a16z.com/feed/")
 }
 
 func doHack(c *cli.Context) {
 	re := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
-	reres := <- re
+	reres := <-re
 	var REData loader.Feed = &reres
 	REData.Display()
 	displayRSSFeed("HackerNews", "https://news.ycombinator.com/rss")
@@ -214,7 +214,7 @@ func doHack(c *cli.Context) {
 func doPH(c *cli.Context) {
 	ph := make(chan loader.ResultData)
 	go loader.GetPHFeed(ph)
-	phres := <- ph
+	phres := <-ph
 	var PHData loader.Feed = &phres
 	PHData.Display()
 }
@@ -222,7 +222,7 @@ func doPH(c *cli.Context) {
 func doRE(c *cli.Context) {
 	re := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
-	reres := <- re
+	reres := <-re
 	var REData loader.Feed = &reres
 	REData.Display()
 }
