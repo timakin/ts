@@ -243,28 +243,28 @@ func doHack(c *cli.Context) {
 	re := make(chan loader.ResultData)
 	hn := make(chan loader.ResultData)
 	gh := make(chan loader.ResultData)
-	ejs := make(chan loader.ResultData)
 	rdaily := make(chan loader.ResultData)
+	ejs := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss", hn)
 	go loader.GetRdfFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss", gh)
-	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
 	go loader.GetRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily", rdaily)
+	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
 	reres := <-re
 	hnres := <-hn
 	ghres := <-gh
-	ejsres := <-ejs
 	rdailyres := <-rdaily
+	ejsres := <-ejs
 	var REData loader.Feed = &reres
 	var HNData loader.Feed = &hnres
 	var GHData loader.Feed = &ghres
-	var EJSData loader.Feed = &ejsres
 	var RDailyData loader.Feed = &rdailyres
+	var EJSData loader.Feed = &ejsres
 	REData.Display()
 	HNData.Display()
 	GHData.Display()
-	EJSData.Display()
 	RDailyData.Display()
+	EJSData.Display()
 }
 
 func doPH(c *cli.Context) {

@@ -4,23 +4,20 @@ TechStack
 ## For what?
 Fat RSS reader disturbs your effective information gathering.</br>Subscribe popular resources simply with CLI.
 
-## Supported Services(v0.1.0)
+## Supported Services(v0.3.0)
 
+- ProductHunt
+- Reddit - Programming
 - HackerNews
 - GithubTrends - All languages#Daily
-- ProductHunt
 - TechCrunch
-- Andreessen Horowitz(a16z)
 - Mashable
 - The Next Web
 - Designer News
 - Forbes - Tech
-- Echojs
 - RubyDaily
-
-## Dependencies
-
-- Golang
+- Echojs
+- Andreessen Horowitz(a16z)
 
 ## Installation(User)
 
