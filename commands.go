@@ -158,10 +158,7 @@ func displayAA() {
 	flag.Parse()
 	str := *flag_str
 	ascii := figlet4go.NewAsciiRender()
-	options := figlet4go.NewRenderOptions()
-	options.FontName = "larry3d"
-	ascii.LoadFont("./fonts/")
-	renderStr, _ := ascii.RenderOpts(str, options)
+	renderStr, _ := ascii.Render(str)
 	ppred(renderStr + "\n\n")
 }
 
