@@ -76,8 +76,8 @@ func GetPHFeed(ph chan ResultData) {
 
 	posts, err := client.GetPosts()
 	perror(err)
-
-	for _, post := range posts[0:5] {
+	if (len(posts) > 5) { posts = posts[:5] }
+	for _, post := range posts {
 		PHTitle = append(PHTitle, post.Name+" : "+post.Tagline)
 		PHUrl = append(PHUrl, post.RedirectUrl)
 	}
