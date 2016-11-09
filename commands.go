@@ -8,7 +8,7 @@ import (
 	"github.com/timakin/ts/loader"
 )
 
-var commands = []cli.Command{
+var Commands = []cli.Command{
 	commandAll,
 	commandHack,
 	commandPH,
