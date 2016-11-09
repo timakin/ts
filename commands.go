@@ -21,7 +21,6 @@ var Commands = []cli.Command{
 	commandDN,
 	commandFB,
 	commandEJ,
-	commandRD,
 	commandA16Z,
 	commandHatena,
 }
@@ -121,14 +120,6 @@ var commandEJ = cli.Command{
 	Action: doEJ,
 }
 
-var commandRD = cli.Command{
-	Name:  "rdaily",
-	Usage: "",
-	Description: `
-`,
-	Action: doRD,
-}
-
 var commandA16Z = cli.Command{
 	Name:  "a16z",
 	Usage: "",
@@ -183,7 +174,6 @@ func doAll(c *cli.Context) {
 	tnw := make(chan loader.ResultData)
 	dn := make(chan loader.ResultData)
 	fbs := make(chan loader.ResultData)
-	rdaily := make(chan loader.ResultData)
 	ejs := make(chan loader.ResultData)
 	a16z := make(chan loader.ResultData)
 	go loader.GetPHFeed(ph)
@@ -195,7 +185,6 @@ func doAll(c *cli.Context) {
 	go loader.GetRssFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb", tnw)
 	go loader.GetRssFeed("Designer News", "https://news.layervault.com/?format=rss", dn)
 	go loader.GetRssFeed("Forbes - Tech", "http://www.forbes.com/technology/feed/", fbs)
-	go loader.GetRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily", rdaily)
 	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
 	go loader.GetRssFeed("A16Z", "http://a16z.com/feed/", a16z)
 	phres := <-ph
@@ -207,7 +196,6 @@ func doAll(c *cli.Context) {
 	tnwres := <-tnw
 	dnres := <-dn
 	fbsres := <-fbs
-	rdailyres := <-rdaily
 	ejsres := <-ejs
 	a16zres := <-a16z
 	var PHData loader.Feed = &phres
@@ -219,7 +207,6 @@ func doAll(c *cli.Context) {
 	var TNWData loader.Feed = &tnwres
 	var DNData loader.Feed = &dnres
 	var FBSData loader.Feed = &fbsres
-	var RDailyData loader.Feed = &rdailyres
 	var EJSData loader.Feed = &ejsres
 	var A16ZData loader.Feed = &a16zres
 	PHData.Display()
@@ -231,7 +218,6 @@ func doAll(c *cli.Context) {
 	TNWData.Display()
 	DNData.Display()
 	FBSData.Display()
-	RDailyData.Display()
 	EJSData.Display()
 	A16ZData.Display()
 }
@@ -245,22 +231,18 @@ func doHack(c *cli.Context) {
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss", hn)
 	go loader.GetRdfFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss", gh)
-	go loader.GetRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily", rdaily)
 	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
 	reres := <-re
 	hnres := <-hn
 	ghres := <-gh
-	rdailyres := <-rdaily
 	ejsres := <-ejs
 	var REData loader.Feed = &reres
 	var HNData loader.Feed = &hnres
 	var GHData loader.Feed = &ghres
-	var RDailyData loader.Feed = &rdailyres
 	var EJSData loader.Feed = &ejsres
 	REData.Display()
 	HNData.Display()
 	GHData.Display()
-	RDailyData.Display()
 	EJSData.Display()
 }
 
@@ -310,10 +292,6 @@ func doFB(c *cli.Context) {
 
 func doEJ(c *cli.Context) {
 	displayUnitRssFeed("EchoJS", "http://www.echojs.com/rss")
-}
-
-func doRD(c *cli.Context) {
-	displayUnitRssFeed("RubyDaily", "http://feeds.rubydaily.org/RubyDaily")
 }
 
 func doA16Z(c *cli.Context) {
