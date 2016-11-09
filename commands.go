@@ -8,7 +8,7 @@ import (
 	"github.com/timakin/ts/loader"
 )
 
-var Commands = []cli.Command{
+var commands = []cli.Command{
 	commandAll,
 	commandHack,
 	commandPH,
@@ -226,7 +226,6 @@ func doHack(c *cli.Context) {
 	re := make(chan loader.ResultData)
 	hn := make(chan loader.ResultData)
 	gh := make(chan loader.ResultData)
-	rdaily := make(chan loader.ResultData)
 	ejs := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss", hn)
