@@ -19,30 +19,7 @@ Fat RSS reader disturbs your effective information gathering.</br>Subscribe popu
 - Echojs
 - Andreessen Horowitz(a16z)
 
-## Installation(User)
-
-```bash
-brew tap timakin/ts
-brew install ts
-```
-
-## Update(User)
-
-```bash
-brew uninstall ts
-brew untap timakin/ts
-brew tap timakin/ts
-brew install ts
-```
-
-## Installation(Dev)
-
-To install, use `go get`:
-
-```bash
-$ go get github.com/timakin/ts
-```
-## Update
+## Installation
 
 ```bash
 $ go get -u github.com/timakin/ts
