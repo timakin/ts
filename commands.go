@@ -179,7 +179,7 @@ func doAll(c *cli.Context) {
 	go loader.GetPHFeed(ph)
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss", hn)
-	go loader.GetRdfFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss", gh)
+	go loader.GetRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss", gh)
 	go loader.GetRssFeed("TechCrunch", "http://feeds.feedburner.com/TechCrunch/", tc)
 	go loader.GetRssFeed("Mashable", "http://feeds.mashable.com/Mashable", ms)
 	go loader.GetRssFeed("The Next Web", "http://feeds2.feedburner.com/thenextweb", tnw)
@@ -229,7 +229,7 @@ func doHack(c *cli.Context) {
 	ejs := make(chan loader.ResultData)
 	go loader.GetRedditFeed(re)
 	go loader.GetRssFeed("HackerNews", "https://news.ycombinator.com/rss", hn)
-	go loader.GetRdfFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss", gh)
+	go loader.GetRssFeedWithDesc("Github Trends", "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss", gh)
 	go loader.GetRssFeed("EchoJS", "http://www.echojs.com/rss", ejs)
 	reres := <-re
 	hnres := <-hn
